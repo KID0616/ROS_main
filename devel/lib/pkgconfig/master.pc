@@ -1,0 +1,8 @@
+prefix=/home/kid/ROS_main/devel
+
+Name: master
+Description: Description of master
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/kid/ROS_main/devel/lib 
+Requires: 
