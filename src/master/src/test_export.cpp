@@ -7,12 +7,15 @@
 //geometry_msgs/PoseWithCovariance.h ヘッダファイル
 #include <geometry_msgs/PoseStamped.h>
 
+geometry_msgs::PoseStamped pose_unv;
+
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
 // 引数にはトピックにPublishされるメッセージの型と同じ型を定義する
 void chatterCallback(const geometry_msgs::PoseStamped pose)
 {
     //printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.pose.position.y, pose.pose.position.z );
     //printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
+    pose_unv = pose;
 }
 
 
@@ -58,8 +61,8 @@ int main(int argc, char **argv)
   int count = 0;
   while (ros::ok())//ノードが実行中は基本的にros::ok()=1
   {
-    twist.linear.x = pose.pose.position.x;
-    twist.angular.z = pose.pose.orientation.z;
+    twist.linear.x = pose_unv.pose.position.x;
+    twist.angular.z = pose_unv.pose.orientation.z;
     twist_pub.publish(twist);//PublishのAPI
     printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
 
