@@ -1,8 +1,11 @@
 // ros/ros.h　ROSに関する基本的なAPIのためのヘッダ
 #include "ros/ros.h"
 
-// geometry_msgs/Twiat.h　ヘッダファイル
+// geometry_msgs/Twist.h　ヘッダファイル
 #include <geometry_msgs/Twist.h>
+
+//geometry_msgs/PoseWithCovariance.h ヘッダファイル
+#include <geometry_msgs/PoseWithCovariance.h>
 
 void chatterCallback(const geometry_msgs::PoseWithCovariance pose)
 {
