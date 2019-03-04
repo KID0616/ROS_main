@@ -9,7 +9,7 @@
 
 void chatterCallback(const geometry_msgs::PoseWithCovariance pose)
 {
-    printf("x:%f  y:%f  z:%f\n",pose.x , pose.y, pose.z );
+    printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.y, pose.z );
     printf("x:%f  y:%f  z:%f  w:%f\n",pose.x , pose.y, pose.z, pose.w );
 }
 
