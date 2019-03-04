@@ -11,7 +11,7 @@ geometry_msgs::PoseStamped pose_unv;
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
 // 引数にはトピックにPublishされるメッセージの型と同じ型を定義する
-void chatterCallback(const geometry_msgs::PoseStamped pose)
+void chatterCallback(const geometry_msgs::PoseStamped pose )
 {
     printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.pose.position.y, pose.pose.position.z );
     printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
@@ -67,8 +67,6 @@ int main(int argc, char **argv)
     printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
 
     // トピック更新の待ちうけを行うAPI
-    ros::spin();
-
     ros::spinOnce();
     loop_rate.sleep();
     count++;
