@@ -7,11 +7,16 @@
 //geometry_msgs/PoseWithCovariance.h ヘッダファイル
 #include <geometry_msgs/PoseWithCovariance.h>
 
+// Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
+// 引数にはトピックにPublishされるメッセージの型と同じ型を定義する
 void chatterCallback(const geometry_msgs::PoseWithCovariance pose)
 {
     printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.pose.position.y, pose.pose.position.z );
     printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
 }
+
+
+
 
 int main(int argc, char **argv)
 {
@@ -45,17 +50,21 @@ int main(int argc, char **argv)
   twist.angular.z = 1.0;
 
   //ここからSubscriberの定義
-
-
-
-
+  
+  // Subscriberとして/aruco_single/poseというトピックがSubscribeし、トピックが更新されたときは
+  // chatterCallbackという名前のコールバック関数を実行する
+  ros::Subscriber sub = nh.subscribe("/aruco_single/pose", 1000, chatterCallback);
+  
   int count = 0;
   while (ros::ok())//ノードが実行中は基本的にros::ok()=1
   {
   //twist.linear.x = count;
   //twist.angular.z = count;
     twist_pub.publish(twist);//PublishのAPI
-    printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
+    //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
+    printf("繰り返し:%d",count);
+    // トピック更新の待ちうけを行うAPI
+    ros::spin();
     ros::spinOnce();
     loop_rate.sleep();
     count++;
