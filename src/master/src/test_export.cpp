@@ -7,8 +7,10 @@
 //geometry_msgs/PoseWithCovariance.h ヘッダファイル
 #include <geometry_msgs/PoseStamped.h>
 
-#define K_p 0.3
+#define x_d 0.3  //目標位置
+#define K_p 0.3  //目標ゲイン
 
+geometry_msgs::Twist twist;
 geometry_msgs::PoseStamped pose_unv;
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
@@ -17,7 +19,12 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
 {
     //printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.pose.position.y, pose.pose.position.z );
     //printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
-    pose_unv = pose;
+    //pose_unv = pose;
+    twist.linear.x = -1 * K_p * (0.3 - pose.pose.position.z);
+    //twist.angular.z = pose_unv.pose.orientation.z;
+    
+    twist_pub.publish(twist);//PublishのAPI
+    printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
 }
 
 
@@ -44,7 +51,6 @@ int main(int argc, char **argv)
   ros::Rate loop_rate(10);
 
   //geometry_msgs::Twist型のオブジェクトを定義
-  geometry_msgs::Twist twist;
 
   //初期値の定義
   twist.linear.x = 0.0;  //直進方向に寄与するのはこの部分だけ
@@ -63,14 +69,15 @@ int main(int argc, char **argv)
   int count = 0;
   while (ros::ok())//ノードが実行中は基本的にros::ok()=1
   {
-    twist.linear.x = -1 * K_p * (0.3 - pose_unv.pose.position.z);
+    //twist.linear.x = -1 * K_p * (0.3 - pose_unv.pose.position.z);
     //twist.angular.z = pose_unv.pose.orientation.z;
     
-    twist_pub.publish(twist);//PublishのAPI
-    printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
-    twist.linear.x = 0.0;
+    //.publish(twist);//PublishのAPI
+    //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
+
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
+    twist.linear.x = 0.0;
     loop_rate.sleep();
     count++;
   }
