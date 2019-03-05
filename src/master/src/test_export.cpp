@@ -13,11 +13,6 @@
 geometry_msgs::Twist twist;
 geometry_msgs::PoseStamped pose_unv;
 
-ros::NodeHandle nh;
-
-ros::Publisher twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
-
-
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
 // 引数にはトピックにPublishされるメッセージの型と同じ型を定義する
@@ -26,7 +21,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     //printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.pose.position.y, pose.pose.position.z );
     //printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
     //pose_unv = pose;
-    twist.linear.x = -1 * K_p * (0.3 - pose.pose.position.z);
+    twist.linear.x = -1 * K_p * (x_d - pose.pose.position.z);
     //twist.angular.z = pose_unv.pose.orientation.z;
     
     twist_pub.publish(twist);//PublishのAPI
@@ -43,7 +38,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "master");
 
   // ノードハンドラの宣言
-  //ros::NodeHandle nh;
+  ros::NodeHandle nh;
 
   //Publisherとしての定義
   // n.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
@@ -51,7 +46,7 @@ int main(int argc, char **argv)
   //"1000"はトピックキューの最大値
   // ros::Publisher twist_pub = nh.advertise<geometry_msgs::Twist>("Twist/data", 1000);
 
-  //ros::Publisher twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
+  ros::Publisher twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
 
   //1秒間に1つのメッセージをPublishする
   ros::Rate loop_rate(10);
@@ -77,12 +72,11 @@ int main(int argc, char **argv)
   {
     //twist.linear.x = -1 * K_p * (0.3 - pose_unv.pose.position.z);
     //twist.angular.z = pose_unv.pose.orientation.z;
-    
-    //.publish(twist);//PublishのAPI
-    //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
 
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
+    twist_pub.publish(twist);//PublishのAPI
+    printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
     twist.linear.x = 0.0;
     loop_rate.sleep();
     count++;
