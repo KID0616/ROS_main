@@ -45,9 +45,9 @@ int main(int argc, char **argv)
   geometry_msgs::Twist twist;
 
   //初期値の定義
-  twist.linear.x = 0.0;
+  twist.linear.x = 1.0;
   twist.linear.y = 0.0;
-  twist.linear.z = 1.0;
+  twist.linear.z = 0.0;
   twist.angular.x = 0.0;
   twist.angular.y = 0.0;
   twist.angular.z = 0.0;
