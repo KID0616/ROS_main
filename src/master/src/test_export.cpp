@@ -67,9 +67,8 @@ int main(int argc, char **argv)
     //twist.angular.z = pose_unv.pose.orientation.z;
     
     twist_pub.publish(twist);//PublishのAPI
-    twist.linear.x = 0.0;
     printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
-
+    twist.linear.x = 0.0;
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
     loop_rate.sleep();
