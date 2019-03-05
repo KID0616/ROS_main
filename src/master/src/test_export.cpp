@@ -11,6 +11,7 @@
 
 #define x_d 0.5  //目標位置
 #define K_p 0.5  //目標ゲイン
+#define K_phi 0.5
 
 geometry_msgs::Twist twist;
 geometry_msgs::PoseStamped pose_unv;
@@ -23,8 +24,8 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     //printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.pose.position.y, pose.pose.position.z );
     //printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
     //pose_unv = pose;
-    //twist.linear.x = -1 * K_p * (x_d - pose.pose.position.z);
-    twist.angular.z = -1 * atan2(pose.pose.position.x , pose.pose.position.z);
+    twist.linear.x = -1 * K_p * (x_d - pose.pose.position.z);
+    twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
 }
 
 
