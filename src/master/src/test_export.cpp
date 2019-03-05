@@ -39,15 +39,15 @@ int main(int argc, char **argv)
   ros::Publisher twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
 
   //1秒間に1つのメッセージをPublishする
-  ros::Rate loop_rate(10);
+  ros::Rate loop_rate(1);
 
   //geometry_msgs::Twist型のオブジェクトを定義
   geometry_msgs::Twist twist;
 
   //初期値の定義
-  twist.linear.x = 1.0;
+  twist.linear.x = 0.0;
   twist.linear.y = 0.0;
-  twist.linear.z = 0.0;
+  twist.linear.z = 1.0;
   twist.angular.x = 0.0;
   twist.angular.y = 0.0;
   twist.angular.z = 0.0;
