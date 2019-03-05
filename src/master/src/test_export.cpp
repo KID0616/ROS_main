@@ -7,6 +7,8 @@
 //geometry_msgs/PoseWithCovariance.h ヘッダファイル
 #include <geometry_msgs/PoseStamped.h>
 
+#define K_p 0.5
+
 geometry_msgs::PoseStamped pose_unv;
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
@@ -50,7 +52,7 @@ int main(int argc, char **argv)
   twist.linear.z = 0.0;
   twist.angular.x = 0.0;
   twist.angular.y = 0.0;
-  twist.angular.z = 1.0;  //回転に寄与するのはこの部分だけ
+  twist.angular.z = 0.0;  //回転に寄与するのはこの部分だけ
 
   //ここからSubscriberの定義
   
@@ -61,7 +63,7 @@ int main(int argc, char **argv)
   int count = 0;
   while (ros::ok())//ノードが実行中は基本的にros::ok()=1
   {
-    //twist.linear.x = pose_unv.pose.position.x;
+    twist.linear.x = -1 * K_p * (0.3 - pose_unv.pose.position.z);
     //twist.angular.z = pose_unv.pose.orientation.z;
     
     twist_pub.publish(twist);//PublishのAPI
