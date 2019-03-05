@@ -8,7 +8,7 @@
 #include <geometry_msgs/PoseStamped.h>
 
 #define x_d 0.5  //目標位置
-#define K_p 0.3  //目標ゲイン
+#define K_p 0.5  //目標ゲイン
 
 geometry_msgs::Twist twist;
 geometry_msgs::PoseStamped pose_unv;
