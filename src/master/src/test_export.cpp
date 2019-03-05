@@ -45,7 +45,7 @@ int main(int argc, char **argv)
   geometry_msgs::Twist twist;
 
   //初期値の定義
-  twist.linear.x = 0.0;
+  twist.linear.x = 1.0;
   twist.linear.y = 0.0;
   twist.linear.z = 0.0;
   twist.angular.x = 0.0;
@@ -61,8 +61,9 @@ int main(int argc, char **argv)
   int count = 0;
   while (ros::ok())//ノードが実行中は基本的にros::ok()=1
   {
-    twist.linear.x = pose_unv.pose.position.x;
-    twist.angular.z = pose_unv.pose.orientation.z;
+    //twist.linear.x = pose_unv.pose.position.x;
+    //twist.angular.z = pose_unv.pose.orientation.z;
+    
     twist_pub.publish(twist);//PublishのAPI
     printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
 
