@@ -63,7 +63,7 @@ int main(int argc, char **argv)
   int count = 0;
   while (ros::ok())//ノードが実行中は基本的にros::ok()=1
   {
-    twist.linear.x = K_p * (0.3 - pose_unv.pose.position.z);
+    twist.linear.x = -1 * K_p * (0.3 - pose_unv.pose.position.z);
     //twist.angular.z = pose_unv.pose.orientation.z;
     
     twist_pub.publish(twist);//PublishのAPI
