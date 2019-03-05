@@ -23,9 +23,6 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     //pose_unv = pose;
     twist.linear.x = -1 * K_p * (x_d - pose.pose.position.z);
     //twist.angular.z = pose_unv.pose.orientation.z;
-    
-    twist_pub.publish(twist);//PublishのAPI
-    printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
 }
 
 
