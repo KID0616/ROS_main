@@ -7,7 +7,7 @@
 //geometry_msgs/PoseWithCovariance.h ヘッダファイル
 #include <geometry_msgs/PoseStamped.h>
 
-#define K_p 0.01
+#define K_p 0.1
 
 geometry_msgs::PoseStamped pose_unv;
 
