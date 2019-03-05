@@ -11,7 +11,7 @@
 
 #define x_d 0.5  //目標位置
 #define K_p 0.5  //目標ゲイン
-#define K_phi 0.5
+#define K_phi 1.5
 
 geometry_msgs::Twist twist;
 geometry_msgs::PoseStamped pose_unv;
