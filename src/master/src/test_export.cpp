@@ -7,6 +7,8 @@
 //geometry_msgs/PoseWithCovariance.h ヘッダファイル
 #include <geometry_msgs/PoseStamped.h>
 
+#include<cmath>
+
 #define x_d 0.5  //目標位置
 #define K_p 0.5  //目標ゲイン
 
@@ -22,7 +24,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     //printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
     //pose_unv = pose;
     twist.linear.x = -1 * K_p * (x_d - pose.pose.position.z);
-    //twist.angular.z = pose_unv.pose.orientation.z;
+    twist.angular.z = -1 * atan2(pose.pose.position.x , pose.pose.position.z);
 }
 
 
@@ -67,14 +69,12 @@ int main(int argc, char **argv)
   int count = 0;
   while (ros::ok())//ノードが実行中は基本的にros::ok()=1
   {
-    //twist.linear.x = -1 * K_p * (0.3 - pose_unv.pose.position.z);
-    //twist.angular.z = pose_unv.pose.orientation.z;
-
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
     twist_pub.publish(twist);//PublishのAPI
     printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
     twist.linear.x = 0.0;
+    twist.angular.z = 0.0;
     loop_rate.sleep();
     count++;
   }
