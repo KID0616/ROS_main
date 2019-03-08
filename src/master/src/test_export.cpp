@@ -47,7 +47,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
       t = t_s*1000 + t_n / 1000000;
     }
 
-    printf("t_s = %d  t_n = %d",t_s,t_n);
+    printf("t_s = %d  t_n = %d\n",t_s,t_n);
     e_i = e_i + e * t;
     e_d = (e - e_I) / t;
 
