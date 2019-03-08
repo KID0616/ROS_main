@@ -34,12 +34,15 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     //pose_unv = pose;
     double e = 0.0;
     double e_d = 0.0;
+    int t_s = 0;
+
+    t_s = pose.header.stamp.sec - t_s_1;
     e = x_d - pose.pose.position.z;
     if(pose.header.seq ==1){
       t = pose.header.stamp.nsec / 1000;
     }
-    else{
-      t = ((pose.header.stamp.sec - t_s_1 )*1000 + pose.header.stamp.nsec / 1000) - t_1;
+    else if (t_s =< 1){
+      t = t_s*1000 + pose.header.stamp.nsec / 1000000 - t_1;
     }
     e_i = e_i + e * t;
     e_d = (e - e_I) / t;
