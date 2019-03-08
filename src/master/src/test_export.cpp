@@ -19,8 +19,10 @@ geometry_msgs::Twist twist;
 
 //誤差の積分
 double e_i = 0.0;
+double e_I = 0.0;
 
-double t = 0.0;
+int t = 0;
+int t_1 = 0;
 
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
@@ -30,10 +32,21 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     //printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.pose.position.y, pose.pose.position.z );
     //printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
     //pose_unv = pose;
-    t = pose.header.stamp;
+    double e = 0.0;
+    double e_d = 0.0;
+    e = x_d - pose.pose.position.z;
+    t = pose.header.stamp.nsec / 1000 - t_1;
 
-    twist.linear.x = -1 *( K_p * (x_d - pose.pose.position.z) + K_i * e_i ;
+    e_i = e_i + e * t;
+    e_d = (e - e_I) / t;
+
+
+    twist.linear.x = -1 *( K_p * e + K_i * e_i + K_d * e_d ) ;
     twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
+
+    //グローバル変数を更新
+    t_1 = t;
+    e_I = e;
 }
 
 
