@@ -21,25 +21,25 @@ geometry_msgs::Twist twist;
 double e_i = 0.0;
 double e_I = 0.0;
 
-int t = 0;
-int t_1 = 0;
-int t_s_1 = 0;
+int t = 0;   // Δt
+int t_n_1 = 0; // 前回のナノ秒
+int t_s_1 = 0; // 前回の秒
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
 // 引数にはトピックにPublishされるメッセージの型と同じ型を定義する
 void chatterCallback(const geometry_msgs::PoseStamped pose )
 {
-    //printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.pose.position.y, pose.pose.position.z );
-    //printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
-    //pose_unv = pose;
-    double e = 0.0;
-    double e_d = 0.0;
-    int t_s = 0;
-    int t_n = 0;
 
+    double e = 0.0;  //z位置誤差
+    double e_d = 0.0;  //微分誤差
+    int t_s = 0;  // 秒の変化
+    int t_n = 0;  //　ナノ秒の変化
+
+    //時間変化の計算
     t_s = pose.header.stamp.sec - t_s_1;
-    t_n = pose.header.stamp.nsec - t_1;
-    e = x_d - pose.pose.position.z;
+    t_n = pose.header.stamp.nsec - t_n_1;
+
+    //時間変化tの計算（ミリ秒）
     if(pose.header.seq ==1){
       t = pose.header.stamp.nsec / 1000000;
     }
@@ -48,7 +48,8 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
       printf("t_s = %d  t_n = %d\n",t_s,t_n);
     }
 
-    //printf("t_s = %d  t_n = %d\n",t_s,t_n);
+    //位置誤差の計算
+    e = x_d - pose.pose.position.z;
     e_i = e_i + e * t;
     e_d = (e - e_I) / t;
 
@@ -56,7 +57,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
 
     //グローバル変数を更新
-    t_1 = pose.header.stamp.nsec;
+    t_n_1 = pose.header.stamp.nsec;
     t_s_1 = pose.header.stamp.sec;
     e_I = e;
 }
@@ -107,10 +108,11 @@ int main(int argc, char **argv)
     ros::spinOnce();
     twist_pub.publish(twist);//PublishのAPI
     //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
-    printf("time is %d\n",t);
+    //printf("time is %d\n",t);
     twist.linear.x = 0.0;
     twist.angular.z = 0.0;
     loop_rate.sleep();
+    printf("time is %d\n",t);
     count++;
   }
   return 0;
