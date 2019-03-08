@@ -51,7 +51,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
 
     //グローバル変数を更新
-    t_1 = t;
+    t_1 = pose.header.stamp.nsec;
     t_s_1 = pose.header.stamp.sec;
     e_I = e;
 }
