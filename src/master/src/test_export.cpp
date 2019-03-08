@@ -11,10 +11,16 @@
 
 #define x_d 0.5  //目標位置
 #define K_p 0.5  //目標ゲイン
+#define K_i 0.5  //目標ゲイン
+#define K_d 0.5  //目標ゲイン
 #define K_phi 1
 
 geometry_msgs::Twist twist;
-geometry_msgs::PoseStamped pose_unv;
+
+//誤差の積分
+double e_i = 0.0;
+
+double t = 0.0;
 
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
@@ -24,7 +30,9 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     //printf("x:%f  y:%f  z:%f\n",pose.pose.position.x , pose.pose.position.y, pose.pose.position.z );
     //printf("x:%f  y:%f  z:%f  w:%f\n",pose.pose.orientation.x , pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w );
     //pose_unv = pose;
-    twist.linear.x = -1 * K_p * (x_d - pose.pose.position.z);
+    t = pose.header.stamp;
+
+    twist.linear.x = -1 *( K_p * (x_d - pose.pose.position.z) + K_i * e_i ;
     twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
 }
 
@@ -73,7 +81,8 @@ int main(int argc, char **argv)
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
     twist_pub.publish(twist);//PublishのAPI
-    printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
+    //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
+    printf("time is %f",t);
     twist.linear.x = 0.0;
     twist.angular.z = 0.0;
     loop_rate.sleep();
