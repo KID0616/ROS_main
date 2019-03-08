@@ -99,7 +99,7 @@ int main(int argc, char **argv)
   
   // Subscriberとして/aruco_single/poseというトピックがSubscribeし、トピックが更新されたときは
   // chatterCallbackという名前のコールバック関数を実行する
-  ros::Subscriber sub = nh.subscribe("/aruco_single/pose", 1000, chatterCallback);
+  ros::Subscriber sub = nh.subscribe("/aruco_single/pose", 50, chatterCallback);
   
   int count = 0;
   while (ros::ok())//ノードが実行中は基本的にros::ok()=1
