@@ -35,11 +35,14 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     double e = 0.0;
     double e_d = 0.0;
     e = x_d - pose.pose.position.z;
-    t = ((pose.header.stamp.sec - t_s_1 )*1000 + pose.header.stamp.nsec / 1000) - t_1;
-
+    if(pose.header.seq ==1){
+      t = pose.header.stamp.nsec / 1000;
+    }
+    else{
+      t = ((pose.header.stamp.sec - t_s_1 )*1000 + pose.header.stamp.nsec / 1000) - t_1;
+    }
     e_i = e_i + e * t;
     e_d = (e - e_I) / t;
-
 
     twist.linear.x = -1 *( K_p * e + K_i * e_i + K_d * e_d ) ;
     twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
