@@ -23,7 +23,7 @@ double e_I = 0.0;
 
 int t = 0;
 int t_1 = 0;
-
+int t_s_1 = 0;
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
 // 引数にはトピックにPublishされるメッセージの型と同じ型を定義する
@@ -35,7 +35,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     double e = 0.0;
     double e_d = 0.0;
     e = x_d - pose.pose.position.z;
-    t = pose.header.stamp.nsec / 1000 - t_1;
+    t = ((pose.header.stamp.sec - t_s_1 )*1000 + pose.header.stamp.nsec / 1000) - t_1;
 
     e_i = e_i + e * t;
     e_d = (e - e_I) / t;
@@ -95,7 +95,7 @@ int main(int argc, char **argv)
     ros::spinOnce();
     twist_pub.publish(twist);//PublishのAPI
     //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
-    printf("time is %d",t);
+    printf("time is %d\n",t);
     twist.linear.x = 0.0;
     twist.angular.z = 0.0;
     loop_rate.sleep();
