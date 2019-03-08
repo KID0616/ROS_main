@@ -42,7 +42,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
       t = pose.header.stamp.nsec / 1000000;
     }
     else if (t_s <= 1){
-      t = t_s*1000 + pose.header.stamp.nsec / 1000000 - t_1;
+      t = t_s*1000 + (pose.header.stamp.nsec - t_1) / 1000000;
     }
     e_i = e_i + e * t;
     e_d = (e - e_I) / t;
