@@ -46,6 +46,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
 
     //グローバル変数を更新
     t_1 = t;
+    t_s_1 = pose.header.stamp.sec;
     e_I = e;
 }
 
