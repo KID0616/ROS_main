@@ -45,9 +45,10 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     }
     else if (t_s <= 1){
       t = t_s*1000 + t_n / 1000000;
-      pose.header.stamp.nsec - t_1;
+      printf("t_s = %d  t_n = %d\n",t_s,t_n);
     }
 
+    //printf("t_s = %d  t_n = %d\n",t_s,t_n);
     e_i = e_i + e * t;
     e_d = (e - e_I) / t;
 
