@@ -108,7 +108,7 @@ int main(int argc, char **argv)
     ros::spinOnce();
     twist_pub.publish(twist);//PublishのAPI
     //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
-    //printf("time is %d\n",t);
+    printf("time is aaaaaaaaaaaaaaaaaaaaaaaaaa\n");
     twist.linear.x = 0.0;
     twist.angular.z = 0.0;
     loop_rate.sleep();
