@@ -11,7 +11,7 @@
 
 #define x_d 0.30  //目標位置
 #define K_p 0.3  //目標ゲイン
-#define K_i 0.01  //目標ゲイン
+#define K_i 0.0  //目標ゲイン
 #define K_d 0.05  //目標ゲイン
 #define K_phi 1
 
