@@ -9,7 +9,7 @@
 
 #include<cmath>
 
-#define x_d 0.5  //目標位置
+#define x_d 1.0  //目標位置
 #define K_p 0.5  //目標ゲイン
 #define K_i 0.01  //目標ゲイン
 #define K_d 0.01  //目標ゲイン
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
     ros::spinOnce();
     twist_pub.publish(twist);//PublishのAPI
     //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
-    printf("time is aaaaaaaaaaaaaaaaaaaaaaaaaa\n");
+    //printf("time is \n");
     twist.linear.x = 0.0;
     twist.angular.z = 0.0;
     loop_rate.sleep();
