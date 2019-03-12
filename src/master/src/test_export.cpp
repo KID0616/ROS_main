@@ -11,8 +11,8 @@
 
 #define x_d 0.5  //目標位置
 #define K_p 0.5  //目標ゲイン
-#define K_i 0.5  //目標ゲイン
-#define K_d 0.5  //目標ゲイン
+#define K_i 0.01  //目標ゲイン
+#define K_d 0.01  //目標ゲイン
 #define K_phi 1
 
 geometry_msgs::Twist twist;
