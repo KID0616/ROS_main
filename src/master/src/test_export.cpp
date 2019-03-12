@@ -9,7 +9,7 @@
 
 #include<cmath>
 
-#define x_d 0.5  //目標位置
+#define x_d 0.15  //目標位置
 #define K_p 0.3  //目標ゲイン
 #define K_i 0.05  //目標ゲイン
 #define K_d 0.01  //目標ゲイン
