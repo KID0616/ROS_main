@@ -10,9 +10,9 @@
 #include<cmath>
 
 #define x_d 0.30  //目標位置
-#define K_p 0.5  //目標ゲイン
+#define K_p 1.0  //目標ゲイン
 #define K_i 0.0  //目標ゲイン
-#define K_d 0.1  //目標ゲイン
+#define K_d 0.3  //目標ゲイン
 #define K_phi 1
 
 geometry_msgs::Twist twist;
@@ -83,7 +83,7 @@ int main(int argc, char **argv)
   ros::Publisher twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
 
   //1秒間に1つのメッセージをPublishする
-  ros::Rate loop_rate(50);
+  ros::Rate loop_rate(15);
 
   //geometry_msgs::Twist型のオブジェクトを定義
 
