@@ -107,12 +107,13 @@ int main(int argc, char **argv)
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
     twist_pub.publish(twist);//PublishのAPI
+    printf("time is %d\n",t);
     //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
     //printf("time is \n");
     twist.linear.x = 0.0;
     twist.angular.z = 0.0;
     loop_rate.sleep();
-    printf("time is %d\n",t);
+    //printf("time is %d\n",t);
     count++;
   }
   return 0;
