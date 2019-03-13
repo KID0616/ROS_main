@@ -10,9 +10,9 @@
 #include<cmath>
 
 #define x_d 0.30  //目標位置
-#define K_p 2.0  //目標ゲイン
+#define K_p 1.0  //目標ゲイン
 #define K_i 0.0  //目標ゲイン
-#define K_d 0.3  //目標ゲイン
+#define K_d 0.5  //目標ゲイン
 #define K_phi 1
 
 geometry_msgs::Twist twist;
