@@ -51,7 +51,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
 
     else if (t_s <= 1){
       t = t_s*1000 + t_n / 1000000;
-      printf("t_s = %d  t_n = %d\n",t_s,t_n);
+      //printf("t_s = %d  t_n = %d\n",t_s,t_n);
     }
 
     //位置誤差の計算
@@ -126,8 +126,8 @@ int main(int argc, char **argv)
     printf("time is %d\n",t);
     //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
     //printf("time is \n");
-    twist.linear.x = 0.0;
-    twist.angular.z = 0.0;
+    //twist.linear.x = 0.0;
+    //twist.angular.z = 0.0;
     loop_rate.sleep();
     //printf("time is %d\n",t);
     count++;
