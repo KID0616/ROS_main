@@ -69,6 +69,9 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     twist.linear.x = v;
     twist.angular.z = w;
 
+    printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
+
+
     //グローバル変数を更新
     t_n_1 = pose.header.stamp.nsec;
     t_s_1 = pose.header.stamp.sec;
