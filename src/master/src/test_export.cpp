@@ -13,7 +13,7 @@
 #define K_p 0.5  //目標ゲイン
 #define K_i 0.0  //目標ゲイン
 #define K_d 0.2  //目標ゲイン
-#define K_phi 0.5
+#define K_phi 0.8
 
 geometry_msgs::Twist twist;
 
