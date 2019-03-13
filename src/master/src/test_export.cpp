@@ -32,6 +32,8 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
 
     double e = 0.0;  //z位置誤差
     double e_d = 0.0;  //微分誤差
+    double a_x = 0.0 //加速度
+    double a_phi = 0.0 //角加速度
     int t_s = 0;  // 秒の変化
     int t_n = 0;  //　ナノ秒の変化
 
@@ -43,6 +45,8 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     if(pose.header.seq ==1){
       t = pose.header.stamp.nsec / 1000000;
     }
+
+
     else if (t_s <= 1){
       t = t_s*1000 + t_n / 1000000;
       printf("t_s = %d  t_n = %d\n",t_s,t_n);
@@ -53,8 +57,14 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     e_i = e_i + e * t;
     e_d = (e - e_I) / t;
 
-    twist.linear.x = -1 *( K_p * e + K_i * e_i - K_d * e_d ) ;
-    twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
+    //twist.linear.x = -1 *( K_p * e + K_i * e_i - K_d * e_d ) ;
+    //twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
+    a_x = -1 *( K_p * e + K_i * e_i - K_d * e_d ) ;
+    a_phi = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
+
+
+    twist.linear.x += a_x * t;
+    twist.angular.z += a_phi * t;
 
     //グローバル変数を更新
     t_n_1 = pose.header.stamp.nsec;
