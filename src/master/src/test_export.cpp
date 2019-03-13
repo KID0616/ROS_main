@@ -61,7 +61,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
 
     //twist.linear.x = -1 *( K_p * e + K_i * e_i - K_d * e_d ) ;
     //twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
-    a_x = -1 *( K_p * e + K_i * e_i + K_d * e_d ) ;
+    a_x = -1 *( K_p * e + K_i * e_i - K_d * e_d ) ;
     //a_phi = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
 
     v += a_x*t;
