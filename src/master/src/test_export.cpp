@@ -101,15 +101,27 @@ int main(int argc, char **argv)
   {
         ROS_INFO_STREAM("initialization in: " << K_p ); //パラメータ取得時,パラメータを表示
   }
-  else if(node_private.getParam("K_i", K_i))  //プライベートパラメータの取得
+  else
+  {
+        ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()); //パラメータ取得失敗時,ノード名を表示
+  }
+  if(node_private.getParam("K_i", K_i))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_i ); //パラメータ取得時,パラメータを表示
   }
-  else if(node_private.getParam("K_d", K_d))  //プライベートパラメータの取得
+  else
+  {
+        ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()); //パラメータ取得失敗時,ノード名を表示
+  }
+  if(node_private.getParam("K_d", K_d))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_d ); //パラメータ取得時,パラメータを表示
   }
-  else if(node_private.getParam("x_d", x_d))  //プライベートパラメータの取得
+  else
+  {
+        ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()); //パラメータ取得失敗時,ノード名を表示
+  }
+  if(node_private.getParam("x_d", x_d))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << x_d ); //パラメータ取得時,パラメータを表示
   }
