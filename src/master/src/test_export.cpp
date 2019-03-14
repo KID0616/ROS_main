@@ -149,7 +149,7 @@ int main(int argc, char **argv)
         ROS_INFO_STREAM("initialization in: " << K_phi_d ); //パラメータ取得時,パラメータを表示
         error = 7;
   }
-  if(error != 0)
+  if(error != 7)
   {
         ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()<< error); //パラメータ取得失敗時,ノード名を表示
   }
