@@ -151,7 +151,7 @@ int main(int argc, char **argv)
   }
   if(error != 0)
   {
-        ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()); //パラメータ取得失敗時,ノード名を表示
+        ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()<< error); //パラメータ取得失敗時,ノード名を表示
   }
 
   //Publisherとしての定義
