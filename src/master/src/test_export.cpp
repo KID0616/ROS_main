@@ -9,7 +9,7 @@
 
 #include<cmath>
 
-#define x_d 0.40  //目標位置
+//#define x_d 0.40  //目標位置
 //#define K_p 0.1  //目標ゲイン
 //#define K_i 0.0  //目標ゲイン
 //#define K_d 0.0  //目標ゲイン 
@@ -18,6 +18,7 @@
 double K_p;
 double K_i;
 double K_d;
+double x_d;
 
 geometry_msgs::Twist twist;
 
@@ -107,6 +108,10 @@ int main(int argc, char **argv)
   else if(node_private.getParam("K_d", K_d))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_d ); //パラメータ取得時,パラメータを表示
+  }
+  else if(node_private.getParam("x_d", x_d))  //プライベートパラメータの取得
+  {
+        ROS_INFO_STREAM("initialization in: " << x_d ); //パラメータ取得時,パラメータを表示
   }
   else
   {

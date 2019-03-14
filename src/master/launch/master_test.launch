@@ -2,11 +2,13 @@
     <arg name="K_p" default="1.0"/>
     <arg name="K_i" default="2.0"/>
     <arg name="K_d" default="3.0"/>
+    <arg name="x_d" default="3.0"/>
     
     <node name="master" pkg="master" type="test_export" >
         <param name="K_p" value="$(arg K_p)"/>
         <param name="K_i" value="$(arg K_i)"/>
         <param name="K_d" value="$(arg K_d)"/>
+        <param name="x_d" value="$(arg x_d)"/>
 
     </node>
 
