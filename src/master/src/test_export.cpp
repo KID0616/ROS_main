@@ -44,7 +44,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     double e = 0.0;  //z位置誤差
     double e_d = 0.0;  //微分誤差
     double e_phi = 0.0;  //z位置誤差
-    double e__phi_d= 0.0;  //微分誤差
+    double e_phi_d= 0.0;  //微分誤差
     double a_x = 0.0; //加速度
     double a_phi = 0.0; //角加速度
     double v = 0.0;
