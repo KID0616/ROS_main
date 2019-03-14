@@ -92,8 +92,9 @@ int main(int argc, char **argv)
 
   // ノードハンドラの宣言
   ros::NodeHandle nh;
+  ros::NodeHandle node_private("~");
 
-  if(nh.getParam("K_p", initNum))  //プライベートパラメータの取得
+  if(node_private.getParam("K_p", initNum))  //プライベートパラメータの取得
     {
         ROS_INFO_STREAM("initialization in: " << initNum ); //パラメータ取得時,パラメータを表示
     }
