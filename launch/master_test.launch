@@ -1,5 +1,5 @@
 <launch>
-    <node name="test_export" pkg="master" type="test_export" >
+    <node name="master" pkg="master" type="test_export" >
 
     </node>
 
