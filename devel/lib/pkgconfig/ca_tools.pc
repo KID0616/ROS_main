@@ -1,0 +1,8 @@
+prefix=/home/kid/ROS_main/devel
+
+Name: ca_tools
+Description: Description of ca_tools
+Version: 1.3.0
+Cflags: 
+Libs: -L/home/kid/ROS_main/devel/lib 
+Requires: 

@@ -117,7 +117,12 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/kid/ROS_main/build/gtest/cmake_install.cmake")
+  include("/home/kid/ROS_main/build/create_autonomy/ca_tools/cmake_install.cmake")
+  include("/home/kid/ROS_main/build/create_autonomy/create_autonomy/cmake_install.cmake")
+  include("/home/kid/ROS_main/build/create_autonomy/ca_msgs/cmake_install.cmake")
   include("/home/kid/ROS_main/build/master/cmake_install.cmake")
+  include("/home/kid/ROS_main/build/create_autonomy/ca_description/cmake_install.cmake")
+  include("/home/kid/ROS_main/build/create_autonomy/ca_driver/cmake_install.cmake")
 
 endif()
 
