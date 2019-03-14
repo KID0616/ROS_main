@@ -2,6 +2,7 @@
     <arg name="K_p" default="1.0"/>
     <arg name="K_i" default="2.0"/>
     <arg name="K_d" default="3.0"/>
+    
     <node name="master" pkg="master" type="test_export" >
         <param name="K_p" value="$(arg K_p)"/>
         <param name="K_i" value="$(arg K_i)"/>
@@ -13,6 +14,8 @@
     <arg name="image_width" default="640" />
     <arg name="image_height" default="480" />
  
+
+
     <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
         <param name="video_device" value="$(arg video_device)" />
         <param name="image_width" value="$(arg image_width)" />
@@ -22,14 +25,14 @@
         <param name="io_method" value="mmap"/>
     </node>
 
+
     <arg name="markerId" default="701"/>
     <arg name="markerSize" default="0.07"/> <!-- in meter -->
     <arg name="eye" default="left"/>
     <arg name="marker_frame" default="marker_frame"/>
     <arg name="ref_frame" default=""/> <!-- leave empty and the pose will be published wrt param parent_name -->
     <arg name="corner_refinement" default="LINES" /> <!-- NONE, HARRIS, LINES, SUBPIX -->
- 
- 
+
     <node pkg="aruco_ros" type="single" name="aruco_single">
         <remap from="/camera_info" to="/usb_cam/camera_info" />
         <remap from="/image" to="/usb_cam/image_raw" />
