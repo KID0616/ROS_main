@@ -13,18 +13,24 @@
 //#define K_p 0.1  //目標ゲイン
 //#define K_i 0.0  //目標ゲイン
 //#define K_d 0.0  //目標ゲイン 
-#define K_phi 0.8
+//#define K_phi 0.8
 
 double K_p;
 double K_i;
 double K_d;
 double x_d;
+double K_phi_p;
+double K_phi_i;
+double K_phi_d;
+
 
 geometry_msgs::Twist twist;
 
 //誤差の積分
 double e_i = 0.0;
 double e_I = 0.0;
+double e_phi_i;
+double e_phi_I;
 
 int t = 0;   // Δt
 int t_n_1 = 0; // 前回のナノ秒
@@ -37,6 +43,8 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
 
     double e = 0.0;  //z位置誤差
     double e_d = 0.0;  //微分誤差
+    double e_phi = 0.0;  //z位置誤差
+    double e__phi_d= 0.0;  //微分誤差
     double a_x = 0.0; //加速度
     double a_phi = 0.0; //角加速度
     double v = 0.0;
@@ -64,10 +72,15 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     e_i = e_i + e * t;
     e_d = (e - e_I) / t;
 
+
+    e_phi = atan2(pose.pose.position.x , pose.pose.position.z);
+    e_phi_i = e_phi_i + e_phi * t;
+    e_phi_d = (e_phi - e_phi_I) / t;
+
     //twist.linear.x = -1 *( K_p * e + K_i * e_i - K_d * e_d ) ;
     //twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
     a_x = -1 *( K_p * e + K_i * e_i + K_d * e_d ) ;
-    //a_phi = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
+    a_phi = -1 *( K_phi_p * e_phi + K_phi_i * e_phi_i + K_phi_d * e_phi_d ) ;
 
     v += a_x*t;
     w += a_phi * t;
@@ -82,6 +95,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     t_n_1 = pose.header.stamp.nsec;
     t_s_1 = pose.header.stamp.sec;
     e_I = e;
+    e_phi_I = e_phi;
 }
 
 
@@ -97,35 +111,45 @@ int main(int argc, char **argv)
   ros::NodeHandle nh;
   ros::NodeHandle node_private("~");
 
-  if(node_private.getParam("K_p", K_p))  //プライベートパラメータの取得
+  int error=0;
+
+
+  if(node_private.getParam("K_p", K_p)) //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_p ); //パラメータ取得時,パラメータを表示
-  }
-  else
-  {
-        ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()); //パラメータ取得失敗時,ノード名を表示
+        error = 1;
   }
   if(node_private.getParam("K_i", K_i))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_i ); //パラメータ取得時,パラメータを表示
-  }
-  else
-  {
-        ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()); //パラメータ取得失敗時,ノード名を表示
+        error = 2;
   }
   if(node_private.getParam("K_d", K_d))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_d ); //パラメータ取得時,パラメータを表示
-  }
-  else
-  {
-        ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()); //パラメータ取得失敗時,ノード名を表示
+        error = 3;
   }
   if(node_private.getParam("x_d", x_d))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << x_d ); //パラメータ取得時,パラメータを表示
+        error = 4;
   }
-  else
+  if(node_private.getParam("K_phi_p", K_phi_p))  //プライベートパラメータの取得
+  {
+        ROS_INFO_STREAM("initialization in: " << K_phi_p ); //パラメータ取得時,パラメータを表示
+        error = 5;
+  }
+  if(node_private.getParam("K_phi_i", K_phi_i))  //プライベートパラメータの取得
+  {
+        ROS_INFO_STREAM("initialization in: " << K_phi_i ); //パラメータ取得時,パラメータを表示
+        error = 6;
+  }
+  if(node_private.getParam("K_phi_d", K_phi_d))  //プライベートパラメータの取得
+  {
+        ROS_INFO_STREAM("initialization in: " << K_phi_d ); //パラメータ取得時,パラメータを表示
+        error = 7;
+  }
+  if(error != 0)
   {
         ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()); //パラメータ取得失敗時,ノード名を表示
   }
