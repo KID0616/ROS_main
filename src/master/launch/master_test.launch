@@ -1,5 +1,6 @@
 <launch>
     <node name="master" pkg="master" type="test_export" >
+        <param name="K_p" value="2"/>
 
     </node>
 

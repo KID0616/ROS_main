@@ -15,6 +15,8 @@
 #define K_d 0.0  //目標ゲイン 
 #define K_phi 0.8
 
+int initNum;
+
 geometry_msgs::Twist twist;
 
 //誤差の積分
@@ -90,6 +92,15 @@ int main(int argc, char **argv)
 
   // ノードハンドラの宣言
   ros::NodeHandle nh;
+
+  if(nh.getParam("K_p", initNum))  //プライベートパラメータの取得
+    {
+        ROS_INFO_STREAM("initialization in: " << initNum ); //パラメータ取得時,パラメータを表示
+    }
+    else
+    {
+        ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()); //パラメータ取得失敗時,ノード名を表示
+    }
 
   //Publisherとしての定義
   // n.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
