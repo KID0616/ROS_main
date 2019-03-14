@@ -1,1 +1,6 @@
-a
+<launch>
+    <node name="test_export" pkg="master" type="test_export" >
+
+    </node>
+
+</launch>
