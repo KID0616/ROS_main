@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 
     // ノードハンドラの宣言
     ros::NodeHandle n;
+    int num = 50;
 
 
     //1秒間に1つのメッセージをPublishする
@@ -29,16 +30,12 @@ int main(int argc, char **argv)
 
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
-        ros::spinOnce();
-        int num;
-        std::cin >> num;
 
         if (num == -1) {
             break;
         }
-
+        
         pwmWrite(18, num);
-        loop_rate.sleep();
     }
   return 0;
 }
