@@ -34,7 +34,7 @@ int main(int argc, char **argv)
         if (num == -1) {
             break;
         }
-        
+        printf("pwm");
         pwmWrite(18, num);
     }
   return 0;
