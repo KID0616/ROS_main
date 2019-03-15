@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
+FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi ~/wiringPi/wiringPi)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -200,4 +202,5 @@ include_directories(
 add_executable(test_export src/test_export.cpp)
 target_link_libraries(test_export ${catkin_LIBRARIES})
 add_executable(servo_test src/servo_test.cpp)
-target_link_libraries(servo_test ${catkin_LIBRARIES})
+target_link_libraries(servo_test ${catkin_LIBRARIES}  ${WIRINGPI_LIBRARY)
+add_dependencies(slave beginner_tutorials_generate_messages_cpp wiringPi)
