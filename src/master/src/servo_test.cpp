@@ -22,7 +22,7 @@ int main(int argc, char **argv)
     return 1;
     }
 
-    pinMode(18, PWM_OUTPUT);
+    pinMode(4, PWM_OUTPUT);
     pwmSetMode(PWM_MODE_MS);
     pwmSetClock(400);
     pwmSetRange(1024);
