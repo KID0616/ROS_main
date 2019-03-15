@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 {
     // 初期化のためのAPI
     // このノードは"para_in"という名前であるという意味
-    ros::init(argc, argv, "para_in");
+    ros::init(argc, argv, "servo_test");
 
     // ノードハンドラの宣言
     ros::NodeHandle n;

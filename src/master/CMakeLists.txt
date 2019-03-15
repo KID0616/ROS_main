@@ -199,3 +199,5 @@ include_directories(
 # catkin_add_nosetests(test)
 add_executable(test_export src/test_export.cpp)
 target_link_libraries(test_export ${catkin_LIBRARIES})
+add_executable(servo_test src/servo_test.cpp)
+target_link_libraries(servo_test ${catkin_LIBRARIES})
