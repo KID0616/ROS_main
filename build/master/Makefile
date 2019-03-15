@@ -451,6 +451,21 @@ rosgraph_msgs_generate_messages_eus/fast:
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
+master/CMakeFiles/servo_test.dir/rule:
+	cd /home/kid/ROS_main/build && $(MAKE) -f CMakeFiles/Makefile2 master/CMakeFiles/servo_test.dir/rule
+.PHONY : master/CMakeFiles/servo_test.dir/rule
+
+# Convenience name for target.
+servo_test: master/CMakeFiles/servo_test.dir/rule
+
+.PHONY : servo_test
+
+# fast build rule for target.
+servo_test/fast:
+	cd /home/kid/ROS_main/build && $(MAKE) -f master/CMakeFiles/servo_test.dir/build.make master/CMakeFiles/servo_test.dir/build
+.PHONY : servo_test/fast
+
+# Convenience name for target.
 master/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/kid/ROS_main/build && $(MAKE) -f CMakeFiles/Makefile2 master/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 .PHONY : master/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
@@ -570,6 +585,33 @@ master_geneus/fast:
 	cd /home/kid/ROS_main/build && $(MAKE) -f master/CMakeFiles/master_geneus.dir/build.make master/CMakeFiles/master_geneus.dir/build
 .PHONY : master_geneus/fast
 
+src/servo_test.o: src/servo_test.cpp.o
+
+.PHONY : src/servo_test.o
+
+# target to build an object file
+src/servo_test.cpp.o:
+	cd /home/kid/ROS_main/build && $(MAKE) -f master/CMakeFiles/servo_test.dir/build.make master/CMakeFiles/servo_test.dir/src/servo_test.cpp.o
+.PHONY : src/servo_test.cpp.o
+
+src/servo_test.i: src/servo_test.cpp.i
+
+.PHONY : src/servo_test.i
+
+# target to preprocess a source file
+src/servo_test.cpp.i:
+	cd /home/kid/ROS_main/build && $(MAKE) -f master/CMakeFiles/servo_test.dir/build.make master/CMakeFiles/servo_test.dir/src/servo_test.cpp.i
+.PHONY : src/servo_test.cpp.i
+
+src/servo_test.s: src/servo_test.cpp.s
+
+.PHONY : src/servo_test.s
+
+# target to generate assembly for a file
+src/servo_test.cpp.s:
+	cd /home/kid/ROS_main/build && $(MAKE) -f master/CMakeFiles/servo_test.dir/build.make master/CMakeFiles/servo_test.dir/src/servo_test.cpp.s
+.PHONY : src/servo_test.cpp.s
+
 src/test_export.o: src/test_export.cpp.o
 
 .PHONY : src/test_export.o
@@ -628,6 +670,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... servo_test"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... master_genlisp"
 	@echo "... list_install_components"
@@ -637,6 +680,9 @@ help:
 	@echo "... master_generate_messages_eus"
 	@echo "... master_generate_messages_py"
 	@echo "... master_geneus"
+	@echo "... src/servo_test.o"
+	@echo "... src/servo_test.i"
+	@echo "... src/servo_test.s"
 	@echo "... src/test_export.o"
 	@echo "... src/test_export.i"
 	@echo "... src/test_export.s"

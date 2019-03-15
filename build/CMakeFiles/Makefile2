@@ -1204,6 +1204,7 @@ clean: create_autonomy/ca_msgs/CMakeFiles/ca_msgs_generate_messages_nodejs.dir/c
 
 # Convenience name for "all" pass in the directory.
 master/all: master/CMakeFiles/test_export.dir/all
+master/all: master/CMakeFiles/servo_test.dir/all
 master/all: master/CMakeFiles/master_generate_messages.dir/all
 
 .PHONY : master/all
@@ -1228,6 +1229,7 @@ master/clean: master/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 master/clean: master/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 master/clean: master/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
 master/clean: master/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+master/clean: master/CMakeFiles/servo_test.dir/clean
 master/clean: master/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 master/clean: master/CMakeFiles/master_genlisp.dir/clean
 master/clean: master/CMakeFiles/master_gennodejs.dir/clean
@@ -1571,7 +1573,7 @@ clean: master/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 master/CMakeFiles/test_export.dir/all:
 	$(MAKE) -f master/CMakeFiles/test_export.dir/build.make master/CMakeFiles/test_export.dir/depend
 	$(MAKE) -f master/CMakeFiles/test_export.dir/build.make master/CMakeFiles/test_export.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kid/ROS_main/build/CMakeFiles --progress-num=42,43 "Built target test_export"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kid/ROS_main/build/CMakeFiles --progress-num=44,45 "Built target test_export"
 .PHONY : master/CMakeFiles/test_export.dir/all
 
 # Include target in all.
@@ -1854,6 +1856,43 @@ master/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
 
 # clean rule for target.
 clean: master/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target master/CMakeFiles/servo_test.dir
+
+# All Build rule for target.
+master/CMakeFiles/servo_test.dir/all:
+	$(MAKE) -f master/CMakeFiles/servo_test.dir/build.make master/CMakeFiles/servo_test.dir/depend
+	$(MAKE) -f master/CMakeFiles/servo_test.dir/build.make master/CMakeFiles/servo_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kid/ROS_main/build/CMakeFiles --progress-num=42,43 "Built target servo_test"
+.PHONY : master/CMakeFiles/servo_test.dir/all
+
+# Include target in all.
+all: master/CMakeFiles/servo_test.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+master/CMakeFiles/servo_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kid/ROS_main/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 master/CMakeFiles/servo_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kid/ROS_main/build/CMakeFiles 0
+.PHONY : master/CMakeFiles/servo_test.dir/rule
+
+# Convenience name for target.
+servo_test: master/CMakeFiles/servo_test.dir/rule
+
+.PHONY : servo_test
+
+# clean rule for target.
+master/CMakeFiles/servo_test.dir/clean:
+	$(MAKE) -f master/CMakeFiles/servo_test.dir/build.make master/CMakeFiles/servo_test.dir/clean
+.PHONY : master/CMakeFiles/servo_test.dir/clean
+
+# clean rule for target.
+clean: master/CMakeFiles/servo_test.dir/clean
 
 .PHONY : clean
 

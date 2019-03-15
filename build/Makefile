@@ -816,6 +816,19 @@ rosgraph_msgs_generate_messages_eus/fast:
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named servo_test
+
+# Build rule for target.
+servo_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 servo_test
+.PHONY : servo_test
+
+# fast build rule for target.
+servo_test/fast:
+	$(MAKE) -f master/CMakeFiles/servo_test.dir/build.make master/CMakeFiles/servo_test.dir/build
+.PHONY : servo_test/fast
+
+#=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -1658,6 +1671,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... servo_test"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... master_genlisp"
 	@echo "... master_gennodejs"
