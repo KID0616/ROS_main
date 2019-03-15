@@ -1,7 +1,7 @@
 // ros/ros.h　ROSに関する基本的なAPIのためのヘッダ
 #include "ros/ros.h"
 #include <iostream>
-#include <wiringPi/wiringPi.h>
+#include <wiringPi.h>
 
 
 int main(int argc, char **argv)
