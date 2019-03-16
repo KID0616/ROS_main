@@ -292,6 +292,9 @@ UBUNTU:BOOL=TRUE
 //LSB Distrib - codename tag
 UBUNTU_XENIAL:BOOL=TRUE
 
+//Path to a library.
+WIRINGPI_LIBRARY:FILEPATH=/usr/local/lib/libwiringPi.so
+
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/include/gmock/gmock.h
 

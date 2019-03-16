@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kid/ROS_main/src/master/src/test_export.cpp" "/home/kid/ROS_main/build/master/CMakeFiles/test_export.dir/src/test_export.cpp.o"
+  "/home/kid/ROS_main/src/master/src/servo_test.cpp" "/home/kid/ROS_main/build/master/CMakeFiles/servo_test.dir/src/servo_test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
