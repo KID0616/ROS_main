@@ -104,7 +104,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+   INCLUDE_DIRS include
 #  LIBRARIES master
 #  CATKIN_DEPENDS geometry_msgs roscpp
 #  DEPENDS system_lib
@@ -118,7 +118,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
  include
-  ${catkin_INCLUDE_DIRS} src/master/include/pigpiod_if2.h
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -201,5 +201,5 @@ include_directories(
 add_executable(test_export src/test_export.cpp)
 target_link_libraries(test_export ${catkin_LIBRARIES})
 add_executable(servo_test src/servo_test.cpp)
-target_link_libraries(servo_test ${catkin_LIBRARIES}  ${PIGPIO_LIBRARY})
+target_link_libraries(servo_test ${catkin_LIBRARIES})
 add_dependencies(servo_test pigpio)
