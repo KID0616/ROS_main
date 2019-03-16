@@ -1,7 +1,11 @@
 // ros/ros.h　ROSに関する基本的なAPIのためのヘッダ
 #include "ros/ros.h"
 #include <iostream>
-#include <wiringPi.h>
+#include "pigpiod_if2.h"
+
+#define servo_num 4
+#define MOTOR_FREQ 400
+#define RANGE 1024
 
 
 int main(int argc, char **argv)
@@ -13,20 +17,14 @@ int main(int argc, char **argv)
     // ノードハンドラの宣言
     ros::NodeHandle n;
     int num = 50;
+    int pi;
 
+    pi = pigpio_start(0, 0);
 
-    //1秒間に1つのメッセージをPublishする
-    ros::Rate loop_rate(1);
-
-    if (wiringPiSetupGpio() == -1) {
-        std::cout << "cannot setup gpio." << std::endl;
-    return 1;
-    }
-
-    pinMode(4, PWM_OUTPUT);
-    pwmSetMode(PWM_MODE_MS);
-    pwmSetClock(400);
-    pwmSetRange(1024);
+    set_mode(pi,servo_num , PI_OUTPUT);
+    //pwmSetMode(PWM_MODE_MS);
+    set_PWM_frequency(pi,servo_num,MOTOR_FREQ); // 周波数指定
+    set_PWM_range(pi, servo_num, RANGE);
 
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
@@ -35,7 +33,9 @@ int main(int argc, char **argv)
             break;
         }
         printf("pwm");
-        pwmWrite(18, num);
+        set_PWM_dutycycle(pi,servo_num,num);
+        gpio_write(pi,RIGHT_MOTER_CW,1);
+        gpio_write(pi,RIGHT_MOTER_CCW,0);
     }
   return 0;
 }
