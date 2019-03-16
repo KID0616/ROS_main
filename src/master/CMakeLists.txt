@@ -120,6 +120,7 @@ catkin_package(
 include_directories(
  include
   ${catkin_INCLUDE_DIRS}
+  ${pigpio_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -202,4 +203,4 @@ include_directories(
 add_executable(test_export src/test_export.cpp)
 target_link_libraries(test_export ${catkin_LIBRARIES})
 add_executable(servo_test src/servo_test.cpp)
-target_link_libraries(servo_test ${catkin_LIBRARIES})
+target_link_libraries(servo_test ${catkin_LIBRARIES} ${pigpio_INCLUDE_DIRS})
