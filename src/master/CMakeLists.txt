@@ -202,5 +202,5 @@ include_directories(
 add_executable(test_export src/test_export.cpp)
 target_link_libraries(test_export ${catkin_LIBRARIES})
 add_executable(servo_test src/servo_test.cpp)
-target_link_libraries(servo_test ${catkin_LIBRARIES}  ${WIRINGPI_LIBRARY})
-add_dependencies(servo_test wiringPi)
+target_link_libraries(servo_test ${catkin_LIBRARIES}  ${PIGPIO_LIBRARY})
+add_dependencies(servo_test pigpio)
