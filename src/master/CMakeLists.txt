@@ -8,7 +8,7 @@ project(master)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  pigpioConfig
+  pigpio
   geometry_msgs
   roscpp
   message_generation
@@ -106,6 +106,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
    INCLUDE_DIRS include
+   pigpio_INCLUDE_DIRS
 #  LIBRARIES master
 #  CATKIN_DEPENDS geometry_msgs roscpp
 #  DEPENDS system_lib
