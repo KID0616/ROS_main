@@ -118,14 +118,13 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
  include
-  ${catkin_INCLUDE_DIRS}
-  PIGPIO_LIBRARY
+  ${catkin_INCLUDE_DIRS} src/master/include/pigpiod_if2.h
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/master.cpp
-# )
+ #  src/${PROJECT_NAME}/master.cpp
+ #)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
