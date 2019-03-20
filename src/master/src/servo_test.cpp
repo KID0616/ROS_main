@@ -29,16 +29,16 @@ int main(int argc, char **argv)
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
 
-        if (num == 100) {
+        if (num == 10000) {
             break;
         }
         printf("%d\n",num);
         num++;
         set_PWM_dutycycle(pi,servo_num,num);
         //gpio_write(pi,servo_num,0);
-        sleep(0.1);
+        sleep(1);
         gpio_write(pi,servo_num,1);
-        sleep(0.1);
+        sleep(1);
         //gpio_write(pi,servo_num,0);
     }
   printf("end");
