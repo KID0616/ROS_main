@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
     // ノードハンドラの宣言
     ros::NodeHandle n;
-    int num = 255;
+    int num = 200;
     int pi;
 
     pi = pigpio_start(0, 0);
