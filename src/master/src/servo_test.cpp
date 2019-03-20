@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     int num = 1;
     int pi;
 
-    //pi = pigpio_start(0, 0);
+    pi = pigpio_start(0, 0);
 
     set_mode(pi,servo_num , PI_OUTPUT);
     //pwmSetMode(PWM_MODE_MS);
