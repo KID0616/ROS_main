@@ -8,7 +8,6 @@ project(master)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  pigpio REQUIRED
   geometry_msgs
   roscpp
   message_generation
@@ -204,4 +203,4 @@ include_directories(
 add_executable(test_export src/test_export.cpp)
 target_link_libraries(test_export ${catkin_LIBRARIES})
 add_executable(servo_test src/servo_test.cpp)
-target_link_libraries(servo_test ${catkin_LIBRARIES} ${pigpio_INCLUDE_DIRS})
+target_link_libraries(servo_test ${catkin_LIBRARIES} pigpiod_if2)
