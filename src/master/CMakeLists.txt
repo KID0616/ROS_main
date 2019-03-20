@@ -105,7 +105,6 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
    INCLUDE_DIRS include
-   pigpio_INCLUDE_DIRS
 #  LIBRARIES master
 #  CATKIN_DEPENDS geometry_msgs roscpp
 #  DEPENDS system_lib
