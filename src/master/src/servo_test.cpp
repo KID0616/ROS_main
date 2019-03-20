@@ -28,7 +28,6 @@ int main(int argc, char **argv)
 
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
-        pi = pigpio_start(0, 0);
 
         if (num == 1000) {
             num =0;
@@ -41,7 +40,6 @@ int main(int argc, char **argv)
         gpio_write(pi,servo_num,1);
         sleep(0.5);
         gpio_write(pi,servo_num,0);
-        pigpio_stop(pi);
     }
   printf("end");
   pigpio_stop(pi);
