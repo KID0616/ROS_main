@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     {
 
         if (num == 10000) {
-            break;
+            num==0;
         }
         printf("%d\n",num);
         num++;
