@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
     // ノードハンドラの宣言
     ros::NodeHandle n;
-    int num = 20;
+    int num = 125;
     int pi;
 
     pi = pigpio_start(0, 0);
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     {
 
         if (num == 1000) {
-            num = 20;
+            num = 25;
         }
         printf("%d\n",num);
         num++;
