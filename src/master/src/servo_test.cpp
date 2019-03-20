@@ -34,6 +34,7 @@ int main(int argc, char **argv)
         }
         printf("%d\n",num);
         num++;
+        //num=75 90deg 25:0deg 125:180deg
         set_PWM_dutycycle(pi,servo_num,num);
         //gpio_write(pi,servo_num,0);
         sleep(1);
