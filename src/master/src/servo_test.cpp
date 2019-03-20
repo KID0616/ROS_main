@@ -4,7 +4,7 @@
 #include "pigpiod_if2.h"
 
 #define servo_num 4
-#define MOTOR_FREQ 400
+#define MOTOR_FREQ 50
 #define RANGE 1024
 
 
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
     // ノードハンドラの宣言
     ros::NodeHandle n;
-    int num = 1000;
+    int num = 0;
     int pi;
 
     pi = pigpio_start(0, 0);
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     set_mode(pi,servo_num , PI_OUTPUT);
     //pwmSetMode(PWM_MODE_MS);
     set_PWM_frequency(pi,servo_num,MOTOR_FREQ); // 周波数指定
-    set_PWM_range(pi, servo_num, RANGE);
+    //set_PWM_range(pi, servo_num, RANGE);
 
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
