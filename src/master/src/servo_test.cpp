@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     {
 
         if (num == 1000) {
-            num =0;
+            num = 20;
         }
         printf("%d\n",num);
         num++;
