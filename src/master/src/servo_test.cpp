@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
     // ノードハンドラの宣言
     ros::NodeHandle n;
-    int num = 100;
+    int num = 0;
     int pi;
 
     pi = pigpio_start(0, 0);
@@ -29,10 +29,11 @@ int main(int argc, char **argv)
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
 
-        if (num == -1) {
+        if (num == 100) {
             break;
         }
         printf("pwm");
+        num++;
         set_PWM_dutycycle(pi,servo_num,num);
         gpio_write(pi,servo_num,1);
         gpio_write(pi,servo_num,0);
