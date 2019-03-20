@@ -16,11 +16,11 @@ int main(int argc, char **argv)
 
     // ノードハンドラの宣言
     ros::NodeHandle n;
-    int num = 125;
+    int num = 25;
     int pi;
 
     pi = pigpio_start(0, 0);
-
+ 
     set_mode(pi,servo_num , PI_OUTPUT);
     //pwmSetMode(PWM_MODE_MS);
     set_PWM_frequency(pi,servo_num,MOTOR_FREQ); // 周波数指定
