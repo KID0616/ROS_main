@@ -33,7 +33,7 @@ int main(int argc, char **argv)
             break;
         }
         printf("%d\n",num);
-        //num++;
+        num++;
         set_PWM_dutycycle(pi,servo_num,num);
         gpio_write(pi,servo_num,0);
         sleep(0.1);
