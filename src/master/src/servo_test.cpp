@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
 
-        if (num == 200) {
+        if (num == 500) {
             break;
         }
         printf("%d\n",num);
