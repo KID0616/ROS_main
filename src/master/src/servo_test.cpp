@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     set_mode(pi,servo_num , PI_OUTPUT);
     //pwmSetMode(PWM_MODE_MS);
     set_PWM_frequency(pi,servo_num,MOTOR_FREQ); // 周波数指定
-    //set_PWM_range(pi, servo_num, RANGE);
+    set_PWM_range(pi, servo_num, RANGE);
 
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
