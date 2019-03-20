@@ -36,9 +36,9 @@ int main(int argc, char **argv)
         num++;
         set_PWM_dutycycle(pi,servo_num,num);
         //gpio_write(pi,servo_num,0);
-        sleep(1);
+        sleep(0.1);
         gpio_write(pi,servo_num,1);
-        sleep(1);
+        sleep(0.1);
         //gpio_write(pi,servo_num,0);
     }
   printf("end");
