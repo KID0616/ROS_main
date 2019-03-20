@@ -38,8 +38,8 @@ int main(int argc, char **argv)
         //gpio_write(pi,servo_num,0);
         sleep(0.5);
         gpio_write(pi,servo_num,1);
-        sleep(0.5);
-        gpio_write(pi,servo_num,0);
+        //sleep(0.5);
+        //gpio_write(pi,servo_num,0);
     }
   printf("end");
   pigpio_stop(pi);
