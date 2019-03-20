@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     int num = 1;
     int pi;
 
-    pi = pigpio_start(0, 0);
+    //pi = pigpio_start(0, 0);
 
     set_mode(pi,servo_num , PI_OUTPUT);
     //pwmSetMode(PWM_MODE_MS);
@@ -28,9 +28,10 @@ int main(int argc, char **argv)
 
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
+        pi = pigpio_start(0, 0);
 
         if (num == 1000) {
-            num==0;
+            num =0;
         }
         printf("%d\n",num);
         num++;
@@ -40,6 +41,7 @@ int main(int argc, char **argv)
         gpio_write(pi,servo_num,1);
         sleep(0.5);
         gpio_write(pi,servo_num,0);
+        pigpio_stop(pi)
     }
   printf("end");
   pigpio_stop(pi);
