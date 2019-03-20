@@ -32,7 +32,7 @@ int main(int argc, char **argv)
         if (num == 100) {
             break;
         }
-        printf("pwm\n");
+        printf("%d\n",num);
         //num++;
         set_PWM_dutycycle(pi,servo_num,num);
         gpio_write(pi,servo_num,0);
