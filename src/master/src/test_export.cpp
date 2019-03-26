@@ -6,8 +6,8 @@
 
 //geometry_msgs/PoseWithCovariance.h ヘッダファイル
 #include <geometry_msgs/PoseStamped.h>
-
 #include<cmath>
+#include "master/deg.h"
 
 //#define x_d 0.40  //目標位置
 //#define K_p 0.1  //目標ゲイン
@@ -161,6 +161,9 @@ int main(int argc, char **argv)
   // ros::Publisher twist_pub = nh.advertise<geometry_msgs::Twist>("Twist/data", 1000);
 
   ros::Publisher twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
+  ros::Publisher servo_pub = nh.advertise<master::deg>("servo_input", 1000);
+
+  master::deg msg;
 
   //1秒間に1つのメッセージをPublishする
   ros::Rate loop_rate(15);
@@ -175,6 +178,8 @@ int main(int argc, char **argv)
   twist.angular.y = 0.0;
   twist.angular.z = 0.0;  //回転に寄与するのはこの部分だけ
 
+  msg.deg = 90;
+
   //ここからSubscriberの定義
   
   // Subscriberとして/aruco_single/poseというトピックがSubscribeし、トピックが更新されたときは
@@ -187,6 +192,7 @@ int main(int argc, char **argv)
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
     twist_pub.publish(twist);//PublishのAPI
+    para_pub.publish(msg);//PublishのAPI
     //printf("time is %d\n",t);
     //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
     //printf("time is \n");

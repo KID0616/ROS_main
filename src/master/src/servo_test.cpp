@@ -2,11 +2,19 @@
 #include "ros/ros.h"
 #include <iostream>
 #include "pigpiod_if2.h"
+#include "master/deg.h"
 
 #define servo_num 4
 #define MOTOR_FREQ 50
 #define RANGE 1024
 
+int deg = 90;
+
+void chatterCallback(const master::deg msg)
+{
+    deg = msg.deg ;
+    printf("a:%d ",deg  );
+}
 
 int main(int argc, char **argv)
 {
@@ -30,18 +38,18 @@ int main(int argc, char **argv)
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
 
-        if (num == 1000) {
-            num = 25;
-        }
+        ros::Subscriber sub = n.subscribe("deg_input", 1000, chatterCallback);
+
         num = (deg/180) * 100 +25 ;
-        printf("%d\n",deg);
+        //printf("%d\n",deg);
         //num=75 90deg 25:0deg 125:180deg
         set_PWM_dutycycle(pi,servo_num,num);
         //gpio_write(pi,servo_num,0);
-        sleep(0.5);
+        sleep(1);
         gpio_write(pi,servo_num,1);
         //sleep(0.5);
         //gpio_write(pi,servo_num,0);
+        ros::spin();
     }
   printf("end");
   pigpio_stop(pi);
