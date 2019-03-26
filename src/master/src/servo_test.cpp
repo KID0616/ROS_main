@@ -18,6 +18,7 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     int num = 75;
     int pi;
+    int deg = 0;
 
     pi = pigpio_start(0, 0);
  
@@ -32,12 +33,12 @@ int main(int argc, char **argv)
         if (num == 1000) {
             num = 25;
         }
-        printf("%d\n",num);
-        num++;
+        num = (deg/180) * 100 +25 ;
+        printf("%d\n",deg);
         //num=75 90deg 25:0deg 125:180deg
         set_PWM_dutycycle(pi,servo_num,num);
         //gpio_write(pi,servo_num,0);
-        sleep(1);
+        sleep(0.1);
         gpio_write(pi,servo_num,1);
         //sleep(0.5);
         //gpio_write(pi,servo_num,0);
