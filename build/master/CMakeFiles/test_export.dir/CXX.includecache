@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/kid/ROS_main/devel/include/master/deg.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/kid/ROS_main/src/master/src/test_export.cpp
 ros/ros.h
 /home/kid/ROS_main/src/master/src/ros/ros.h
@@ -15,6 +31,8 @@ geometry_msgs/PoseStamped.h
 -
 cmath
 -
+master/deg.h
+/home/kid/ROS_main/src/master/src/master/deg.h
 
 /opt/ros/kinetic/include/geometry_msgs/Point.h
 string

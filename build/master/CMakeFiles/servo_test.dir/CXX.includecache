@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/kid/ROS_main/devel/include/master/deg.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/kid/ROS_main/src/master/include/pigpiod_if2.h
 pigpio.h
 /home/kid/ROS_main/src/master/include/pigpio.h
@@ -21,6 +37,8 @@ iostream
 -
 pigpiod_if2.h
 /home/kid/ROS_main/src/master/src/pigpiod_if2.h
+master/deg.h
+/home/kid/ROS_main/src/master/src/master/deg.h
 
 /opt/ros/kinetic/include/ros/advertise_options.h
 ros/forwards.h
@@ -228,6 +246,10 @@ boost/make_shared.hpp
 cstddef
 -
 memory
+-
+
+/opt/ros/kinetic/include/ros/message_operations.h
+ostream
 -
 
 /opt/ros/kinetic/include/ros/message_traits.h
