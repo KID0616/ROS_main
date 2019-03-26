@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     set_PWM_frequency(pi,servo_num,MOTOR_FREQ); // 周波数指定
     set_PWM_range(pi, servo_num, RANGE);
 
-    ros::Rate loop_rate(15);
+    ros::Rate loop_rate(1);
     ros::Subscriber sub = n.subscribe("servo_input", 1000, chatterCallback);
 
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
