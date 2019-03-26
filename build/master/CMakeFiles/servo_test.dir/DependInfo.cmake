@@ -20,7 +20,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/kid/ROS_main/src/master/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/home/kid/ROS_main/src/master/PIGPIO_LIBRARY"
   )
 
 # Targets to which this target links.

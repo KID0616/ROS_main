@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/home/kid/ROS_main/src/master/include/pigpiod_if2.h
+pigpio.h
+/home/kid/ROS_main/src/master/include/pigpio.h
+stdio.h
+-
+pigpiod_if2.h
+-
+
 /home/kid/ROS_main/src/master/src/servo_test.cpp
 ros/ros.h
 /home/kid/ROS_main/src/master/src/ros/ros.h

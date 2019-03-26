@@ -3,6 +3,6 @@ prefix=/home/kid/ROS_main/install
 Name: master
 Description: Description of master
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/kid/ROS_main/install/include
 Libs: -L/home/kid/ROS_main/install/lib 
 Requires: 
