@@ -198,7 +198,7 @@ int main(int argc, char **argv)
     //printf("time is \n");
     twist.linear.x = 0.0;
     twist.angular.z = 0.0;
-    if(msg.deg == 180){
+    if(msg.deg == 15){
           msg.deg = 0;
     }
     msg.deg++;
