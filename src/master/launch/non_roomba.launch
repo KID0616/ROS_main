@@ -6,6 +6,9 @@
     <arg name="K_phi_p" default="0.05"/>
     <arg name="K_phi_i" default="0.0"/>
     <arg name="K_phi_d" default="0.8"/>
+    <arg name="K_s_p" default="0.05"/>
+    <arg name="K_s_i" default="0.0"/>
+    <arg name="K_s_d" default="0.8"/>
     
     <node name="master" pkg="master" type="test_export" >
         <param name="K_p" value="$(arg K_p)"/>
@@ -15,6 +18,9 @@
         <param name="K_phi_p" value="$(arg K_phi_p)"/>
         <param name="K_phi_i" value="$(arg K_phi_i)"/>
         <param name="K_phi_d" value="$(arg K_phi_d)"/>
+        <param name="K_s_p" value="$(arg K_s_p)"/>
+        <param name="K_s_i" value="$(arg K_s_i)"/>
+        <param name="K_s_d" value="$(arg K_s_d)"/>
 
     </node>
 

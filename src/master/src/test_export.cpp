@@ -58,7 +58,8 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     double a_s = 0.0; //加速度
     double v = 0.0;
     double w = 0.0;
-    double v_s
+    double v_s;
+    int theta;
     int t_s = 0;  // 秒の変化
     int t_n = 0;  //　ナノ秒の変化
 
@@ -96,11 +97,14 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     //twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
     a_x = -1 *( K_p * e + K_i * e_i + K_d * e_d ) ;
     a_phi = -1 *( K_phi_p * e_phi + K_phi_i * e_phi_i + K_phi_d * e_phi_d ) ;
+    a_s = -1 *( K_s_p * e_s + K_s_i * e_s_i + K_s_d * e_s_d ) ;
 
     v += a_x*t;
     w += a_phi * t;
+    v_s += a_s * t;
     twist.linear.x = v;
     twist.angular.z = w;
+    theta += v_s * t;
 
     printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
     printf("time is %d\n",t);
@@ -111,6 +115,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     t_s_1 = pose.header.stamp.sec;
     e_I = e;
     e_phi_I = e_phi;
+    e_s_I = e_s;
 }
 
 
@@ -137,34 +142,49 @@ int main(int argc, char **argv)
   if(node_private.getParam("K_i", K_i))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_i ); //パラメータ取得時,パラメータを表示
-        error = 2;
+        error++;
   }
   if(node_private.getParam("K_d", K_d))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_d ); //パラメータ取得時,パラメータを表示
-        error = 3;
+        error++;
   }
   if(node_private.getParam("x_d", x_d))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << x_d ); //パラメータ取得時,パラメータを表示
-        error = 4;
+        error++;
   }
   if(node_private.getParam("K_phi_p", K_phi_p))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_phi_p ); //パラメータ取得時,パラメータを表示
-        error = 5;
+        error++;
   }
   if(node_private.getParam("K_phi_i", K_phi_i))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_phi_i ); //パラメータ取得時,パラメータを表示
-        error = 6;
+        error++;
   }
   if(node_private.getParam("K_phi_d", K_phi_d))  //プライベートパラメータの取得
   {
         ROS_INFO_STREAM("initialization in: " << K_phi_d ); //パラメータ取得時,パラメータを表示
-        error = 7;
+        error++;
   }
-  if(error != 7)
+  if(node_private.getParam("K_s_p", K_s_p))  //プライベートパラメータの取得
+  {
+        ROS_INFO_STREAM("initialization in: " << K_s_p ); //パラメータ取得時,パラメータを表示
+        error++;
+  }
+  if(node_private.getParam("K_s_i", K_s_i))  //プライベートパラメータの取得
+  {
+        ROS_INFO_STREAM("initialization in: " << K_s_i ); //パラメータ取得時,パラメータを表示
+        error++;
+  }
+  if(node_private.getParam("K_s_d", K_s_d))  //プライベートパラメータの取得
+  {
+        ROS_INFO_STREAM("initialization in: " << K_s_d ); //パラメータ取得時,パラメータを表示
+        error++;
+  }
+  if(error != 10)
   {
         ROS_ERROR_STREAM("Failed to get init_param at " << ros::this_node::getName()<< error); //パラメータ取得失敗時,ノード名を表示
   }
@@ -206,6 +226,7 @@ int main(int argc, char **argv)
   {
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
+    msg.deg = theta;
     twist_pub.publish(twist);//PublishのAPI
     servo_pub.publish(msg);//PublishのAPI
     //printf("time is %d\n",t);
@@ -213,10 +234,7 @@ int main(int argc, char **argv)
     //printf("time is \n");
     twist.linear.x = 0.0;
     twist.angular.z = 0.0;
-    if(msg.deg == 180){
-          msg.deg = 0;
-    }
-    msg.deg += 45;
+
     loop_rate.sleep();
     //printf("time is %d\n",t);
     count++;
