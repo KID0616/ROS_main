@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
 
-        ros::Subscriber sub = n.subscribe("deg_input", 1000, chatterCallback);
+        ros::Subscriber sub = n.subscribe("servo_input", 1000, chatterCallback);
 
         num = (deg/180) * 100 +25 ;
         //printf("%d\n",deg);
