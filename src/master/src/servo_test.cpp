@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     //int num = 75;
     //int pi;
-    int deg = 90;
+    //int deg = 90;
 
     pi = pigpio_start(0, 0);
  
