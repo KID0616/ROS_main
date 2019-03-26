@@ -42,17 +42,19 @@ int main(int argc, char **argv)
     set_PWM_frequency(pi,servo_num,MOTOR_FREQ); // 周波数指定
     set_PWM_range(pi, servo_num, RANGE);
 
+    ros::Rate loop_rate(15);
+    ros::Subscriber sub = n.subscribe("servo_input", 1000, chatterCallback);
+
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
     {
-
-        ros::Subscriber sub = n.subscribe("servo_input", 1000, chatterCallback);
+        ros::spinOnce();
 
         //num = (deg/180) * 100 +25 ;
         //num=75 90deg 25:0deg 125:180deg
         //set_PWM_dutycycle(pi,servo_num,num);
         // sleep(1);
         // gpio_write(pi,servo_num,1);
-        ros::spin();
+        loop_rate.sleep();
     }
   printf("end");
   gpio_write(pi,servo_num,0);
