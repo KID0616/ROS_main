@@ -9,6 +9,8 @@
 #define RANGE 1024
 
 int deg = 90;
+int num = 75;
+int pi;
 
 void chatterCallback(const master::deg msg)
 {
@@ -29,8 +31,8 @@ int main(int argc, char **argv)
 
     // ノードハンドラの宣言
     ros::NodeHandle n;
-    int num = 75;
-    int pi;
+    //int num = 75;
+    //int pi;
     int deg = 90;
 
     pi = pigpio_start(0, 0);
