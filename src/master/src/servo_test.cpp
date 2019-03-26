@@ -15,12 +15,12 @@ int pi;
 void chatterCallback(const master::deg msg)
 {
     deg = msg.deg ;
-    num = (deg/180) * 100 +25 ;
-    //num=75 90deg 25:0deg 125:180deg
-    set_PWM_dutycycle(pi,servo_num,num);
-    printf("deg:%d \n",num);
-    sleep(1);
-    gpio_write(pi,servo_num,1);
+    // num = (deg/180) * 100 +25 ;
+    // //num=75 90deg 25:0deg 125:180deg
+    // set_PWM_dutycycle(pi,servo_num,num);
+    // printf("deg:%d \n",num);
+    // sleep(1);
+    // gpio_write(pi,servo_num,1);
 }
 
 int main(int argc, char **argv)
@@ -49,12 +49,12 @@ int main(int argc, char **argv)
     {
         ros::spinOnce();
 
-        // num = (deg/180) * 100 +25 ;
-        // //num=75 90deg 25:0deg 125:180deg
-        // set_PWM_dutycycle(pi,servo_num,num);
-        // printf("deg:%d \n",deg);
-        // //sleep(1);
-        // gpio_write(pi,servo_num,1);
+        num = (deg/180) * 100 +25 ;
+        //num=75 90deg 25:0deg 125:180deg
+        set_PWM_dutycycle(pi,servo_num,num);
+        printf("deg:%d \n",num);
+        //sleep(1);
+        gpio_write(pi,servo_num,1);
         loop_rate.sleep();
     }
   printf("end");
