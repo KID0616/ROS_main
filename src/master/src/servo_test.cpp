@@ -15,7 +15,6 @@ int pi;
 void chatterCallback(const master::deg msg)
 {
     deg = msg.deg ;
-    printf("deg:%d \n",deg);
     // num = (deg/180) * 100 +25 ;
     // //num=75 90deg 25:0deg 125:180deg
     // set_PWM_dutycycle(pi,servo_num,num);
@@ -52,7 +51,8 @@ int main(int argc, char **argv)
         num = (deg/180) * 100 +25 ;
         //num=75 90deg 25:0deg 125:180deg
         set_PWM_dutycycle(pi,servo_num,num);
-        sleep(1);
+        printf("deg:%d \n",deg);
+        //sleep(1);
         gpio_write(pi,servo_num,1);
         loop_rate.sleep();
     }
