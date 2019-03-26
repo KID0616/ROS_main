@@ -23,6 +23,10 @@ double K_phi_p;
 double K_phi_i;
 double K_phi_d;
 
+double K_s_p;
+double K_s_i;
+double K_s_d;
+
 
 geometry_msgs::Twist twist;
 
@@ -31,6 +35,8 @@ double e_i = 0.0;
 double e_I = 0.0;
 double e_phi_i;
 double e_phi_I;
+double e_s_i;
+double e_s_I;
 
 int t = 0;   // Δt
 int t_n_1 = 0; // 前回のナノ秒
@@ -45,10 +51,14 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     double e_d = 0.0;  //微分誤差
     double e_phi = 0.0;  //z位置誤差
     double e_phi_d= 0.0;  //微分誤差
+    double e_s = 0.0;  //z位置誤差
+    double e_s_d= 0.0;  //微分誤差
     double a_x = 0.0; //加速度
     double a_phi = 0.0; //角加速度
+    double a_s = 0.0; //加速度
     double v = 0.0;
     double w = 0.0;
+    double v_s
     int t_s = 0;  // 秒の変化
     int t_n = 0;  //　ナノ秒の変化
 
@@ -76,6 +86,11 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     e_phi = atan2(pose.pose.position.x , pose.pose.position.z);
     e_phi_i = e_phi_i + e_phi * t;
     e_phi_d = (e_phi - e_phi_I) / t;
+
+    e_s = -pose.pose.posision.x;
+    e_s_i = e_s_i + e_s * t;
+    e_s_d = (e_s - e_s_I) / t;
+
 
     //twist.linear.x = -1 *( K_p * e + K_i * e_i - K_d * e_d ) ;
     //twist.angular.z = -1 * K_phi * atan2(pose.pose.position.x , pose.pose.position.z);
