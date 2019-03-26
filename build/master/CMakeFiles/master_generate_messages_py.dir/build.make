@@ -53,6 +53,23 @@ CMAKE_BINARY_DIR = /home/kid/ROS_main/build
 # Include the progress variables for this target.
 include master/CMakeFiles/master_generate_messages_py.dir/progress.make
 
+master/CMakeFiles/master_generate_messages_py: /home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg/_deg.py
+master/CMakeFiles/master_generate_messages_py: /home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg/__init__.py
+
+
+/home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg/_deg.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+/home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg/_deg.py: /home/kid/ROS_main/src/master/msg/deg.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kid/ROS_main/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG master/deg"
+	cd /home/kid/ROS_main/build/master && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/kid/ROS_main/src/master/msg/deg.msg -Imaster:/home/kid/ROS_main/src/master/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p master -o /home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg
+
+/home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+/home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg/__init__.py: /home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg/_deg.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kid/ROS_main/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for master"
+	cd /home/kid/ROS_main/build/master && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg --initpy
+
+master_generate_messages_py: master/CMakeFiles/master_generate_messages_py
+master_generate_messages_py: /home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg/_deg.py
+master_generate_messages_py: /home/kid/ROS_main/devel/lib/python2.7/dist-packages/master/msg/__init__.py
 master_generate_messages_py: master/CMakeFiles/master_generate_messages_py.dir/build.make
 
 .PHONY : master_generate_messages_py

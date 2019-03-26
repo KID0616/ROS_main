@@ -53,14 +53,21 @@ CMAKE_BINARY_DIR = /home/kid/ROS_main/build
 # Include the progress variables for this target.
 include master/CMakeFiles/master_generate_messages_eus.dir/progress.make
 
+master/CMakeFiles/master_generate_messages_eus: /home/kid/ROS_main/devel/share/roseus/ros/master/msg/deg.l
 master/CMakeFiles/master_generate_messages_eus: /home/kid/ROS_main/devel/share/roseus/ros/master/manifest.l
 
 
+/home/kid/ROS_main/devel/share/roseus/ros/master/msg/deg.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/kid/ROS_main/devel/share/roseus/ros/master/msg/deg.l: /home/kid/ROS_main/src/master/msg/deg.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kid/ROS_main/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from master/deg.msg"
+	cd /home/kid/ROS_main/build/master && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/kid/ROS_main/src/master/msg/deg.msg -Imaster:/home/kid/ROS_main/src/master/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p master -o /home/kid/ROS_main/devel/share/roseus/ros/master/msg
+
 /home/kid/ROS_main/devel/share/roseus/ros/master/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kid/ROS_main/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp manifest code for master"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kid/ROS_main/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for master"
 	cd /home/kid/ROS_main/build/master && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/kid/ROS_main/devel/share/roseus/ros/master master geometry_msgs
 
 master_generate_messages_eus: master/CMakeFiles/master_generate_messages_eus
+master_generate_messages_eus: /home/kid/ROS_main/devel/share/roseus/ros/master/msg/deg.l
 master_generate_messages_eus: /home/kid/ROS_main/devel/share/roseus/ros/master/manifest.l
 master_generate_messages_eus: master/CMakeFiles/master_generate_messages_eus.dir/build.make
 

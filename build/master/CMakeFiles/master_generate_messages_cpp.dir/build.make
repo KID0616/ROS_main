@@ -53,6 +53,17 @@ CMAKE_BINARY_DIR = /home/kid/ROS_main/build
 # Include the progress variables for this target.
 include master/CMakeFiles/master_generate_messages_cpp.dir/progress.make
 
+master/CMakeFiles/master_generate_messages_cpp: /home/kid/ROS_main/devel/include/master/deg.h
+
+
+/home/kid/ROS_main/devel/include/master/deg.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+/home/kid/ROS_main/devel/include/master/deg.h: /home/kid/ROS_main/src/master/msg/deg.msg
+/home/kid/ROS_main/devel/include/master/deg.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kid/ROS_main/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from master/deg.msg"
+	cd /home/kid/ROS_main/src/master && /home/kid/ROS_main/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/kid/ROS_main/src/master/msg/deg.msg -Imaster:/home/kid/ROS_main/src/master/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p master -o /home/kid/ROS_main/devel/include/master -e /opt/ros/kinetic/share/gencpp/cmake/..
+
+master_generate_messages_cpp: master/CMakeFiles/master_generate_messages_cpp
+master_generate_messages_cpp: /home/kid/ROS_main/devel/include/master/deg.h
 master_generate_messages_cpp: master/CMakeFiles/master_generate_messages_cpp.dir/build.make
 
 .PHONY : master_generate_messages_cpp

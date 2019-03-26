@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/master_generate_messages_eus"
+  "/home/kid/ROS_main/devel/share/roseus/ros/master/msg/deg.l"
   "/home/kid/ROS_main/devel/share/roseus/ros/master/manifest.l"
 )
 

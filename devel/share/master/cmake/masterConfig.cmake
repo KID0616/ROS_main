@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(master_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/kid/ROS_main/src/master/include " STREQUAL " ")
+if(NOT "/home/kid/ROS_main/devel/include;/home/kid/ROS_main/src/master/include " STREQUAL " ")
   set(master_INCLUDE_DIRS "")
-  set(_include_dirs "/home/kid/ROS_main/src/master/include")
+  set(_include_dirs "/home/kid/ROS_main/devel/include;/home/kid/ROS_main/src/master/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
