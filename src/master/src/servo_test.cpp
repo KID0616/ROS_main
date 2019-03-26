@@ -13,7 +13,7 @@ int deg = 90;
 void chatterCallback(const master::deg msg)
 {
     deg = msg.deg ;
-    printf("a:%d ",deg  );
+    printf("deg:%d \n",deg);
 }
 
 int main(int argc, char **argv)
