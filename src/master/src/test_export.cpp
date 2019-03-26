@@ -192,7 +192,7 @@ int main(int argc, char **argv)
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
     twist_pub.publish(twist);//PublishのAPI
-    para_pub.publish(msg);//PublishのAPI
+    servo_pub.publish(msg);//PublishのAPI
     //printf("time is %d\n",t);
     //printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
     //printf("time is \n");
