@@ -103,7 +103,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     w += a_phi * t ;
     v_s += a_s * t ;
     twist.linear.x = v;
-    twist.angular.z = w;
+    twist.angular.z = w ;
     theta += v_s * t;
 
     printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
