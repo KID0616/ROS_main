@@ -14,6 +14,11 @@ void chatterCallback(const master::deg msg)
 {
     deg = msg.deg ;
     printf("deg:%d \n",deg);
+    num = (deg/180) * 100 +25 ;
+    //num=75 90deg 25:0deg 125:180deg
+    set_PWM_dutycycle(pi,servo_num,num);
+    sleep(1);
+    gpio_write(pi,servo_num,1);
 }
 
 int main(int argc, char **argv)
@@ -40,18 +45,15 @@ int main(int argc, char **argv)
 
         ros::Subscriber sub = n.subscribe("servo_input", 1000, chatterCallback);
 
-        num = (deg/180) * 100 +25 ;
-        //printf("%d\n",deg);
+        //num = (deg/180) * 100 +25 ;
         //num=75 90deg 25:0deg 125:180deg
-        set_PWM_dutycycle(pi,servo_num,num);
-        //gpio_write(pi,servo_num,0);
-        sleep(1);
-        gpio_write(pi,servo_num,1);
-        //sleep(0.5);
-        //gpio_write(pi,servo_num,0);
+        //set_PWM_dutycycle(pi,servo_num,num);
+        // sleep(1);
+        // gpio_write(pi,servo_num,1);
         ros::spin();
     }
   printf("end");
+  gpio_write(pi,servo_num,0);
   pigpio_stop(pi);
   return 0;
 }
