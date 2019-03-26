@@ -19,7 +19,7 @@ void chatterCallback(const master::deg msg)
     //num=75 90deg 25:0deg 125:180deg
     set_PWM_dutycycle(pi,servo_num,num);
     printf("deg:%d \n",num);
-    sleep(1);
+    //sleep(1);
     gpio_write(pi,servo_num,1);
 }
 
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     set_PWM_frequency(pi,servo_num,MOTOR_FREQ); // 周波数指定
     set_PWM_range(pi, servo_num, RANGE);
 
-    ros::Rate loop_rate(1);
+    ros::Rate loop_rate(20);
     ros::Subscriber sub = n.subscribe("servo_input", 1000, chatterCallback);
 
     while (ros::ok())//ノードが実行中は基本的にros::ok()=1
