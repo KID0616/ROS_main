@@ -26,6 +26,7 @@ double K_phi_d;
 double K_s_p;
 double K_s_i;
 double K_s_d;
+int theta;
 
 
 geometry_msgs::Twist twist;
@@ -59,7 +60,6 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     double v = 0.0;
     double w = 0.0;
     double v_s;
-    int theta;
     int t_s = 0;  // 秒の変化
     int t_n = 0;  //　ナノ秒の変化
 
@@ -88,7 +88,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     e_phi_i = e_phi_i + e_phi * t;
     e_phi_d = (e_phi - e_phi_I) / t;
 
-    e_s = -pose.pose.posision.x;
+    e_s = -pose.pose.position.x;
     e_s_i = e_s_i + e_s * t;
     e_s_d = (e_s - e_s_I) / t;
 
