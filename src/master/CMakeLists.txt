@@ -200,4 +200,4 @@ include_directories(
 add_executable(test_export src/test_export.cpp)
 target_link_libraries(test_export ${catkin_LIBRARIES})
 add_executable(servo_test src/servo_test.cpp)
-target_link_libraries(servo_test ${catkin_LIBRARIES} pigpiod_if2)
+target_link_libraries(servo_test ${catkin_LIBRARIES} pigpiod_if2 tf/transform_broadcaster.h>)
