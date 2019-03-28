@@ -26,10 +26,10 @@ double K_phi_d;
 double K_s_p;
 double K_s_i;
 double K_s_d;
-int theta;
 
 
 geometry_msgs::Twist twist;
+master::deg msg;
 
 //誤差の積分
 double e_i = 0.0;
@@ -104,7 +104,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     v_s += a_s * t ;
     twist.linear.x = v;
     twist.angular.z = w ;
-    theta += v_s * t;
+    msg.deg += v_s * t;
 
     printf("a = %f b = %f \n",twist.linear.x  , twist.angular.z );
     printf("time is %d\n",t);
@@ -198,7 +198,7 @@ int main(int argc, char **argv)
   ros::Publisher twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
   ros::Publisher servo_pub = nh.advertise<master::deg>("servo_input", 1000);
 
-  master::deg msg;
+  
 
   //1秒間に1つのメッセージをPublishする
   ros::Rate loop_rate(15);
@@ -226,7 +226,6 @@ int main(int argc, char **argv)
   {
     // トピック更新の待ちうけを行うAPI
     ros::spinOnce();
-    msg.deg = theta;
     twist_pub.publish(twist);//PublishのAPI
     servo_pub.publish(msg);//PublishのAPI
     //printf("time is %d\n",t);
