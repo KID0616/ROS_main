@@ -32,9 +32,19 @@ double e_I = 0.0;
 double e_phi_i;
 double e_phi_I;
 
+double roll,pitch,yaw;
+
 int t = 0;   // Δt
 int t_n_1 = 0; // 前回のナノ秒
 int t_s_1 = 0; // 前回の秒
+
+//座標変換の関数
+ void GetRPY(const geometry_msgs::Quaternion &q,
+ 　double &roll,double &pitch,double &yaw){
+ 　//bulletのクオータニオンに変換
+ 　btQuaternion btq(q.x,q.y,q.z,q.w);
+ 　tf::Matrix3x3(btq).getRPY(roll, pitch, yaw);
+ }
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
 // 引数にはトピックにPublishされるメッセージの型と同じ型を定義する
@@ -52,6 +62,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     int t_s = 0;  // 秒の変化
     int t_n = 0;  //　ナノ秒の変化
 
+    GetRPY(pose.pose.pose.orientation,roll,pitch,yaw);
     //時間変化の計算
     t_s = pose.header.stamp.sec - t_s_1;
     t_n = pose.header.stamp.nsec - t_n_1;
