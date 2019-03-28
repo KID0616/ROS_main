@@ -9,7 +9,7 @@
 #include<cmath>
 #include "master/deg.h"
 #include <tf/transform_broadcaster.h>
-#include <Quaternion.h>
+#include <LinearMath/btQuaternion.h> // Needed to convert rotation ...
 
 //#define x_d 0.40  //目標位置
 //#define K_p 0.1  //目標ゲイン
