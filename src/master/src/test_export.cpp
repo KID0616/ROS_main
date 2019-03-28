@@ -61,7 +61,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     int t_n = 0;  //　ナノ秒の変化
 
     GetRPY(pose.pose.orientation,roll,pitch,yaw);
-    printf("roll = %f pich = %f yaw = %f\n",roll,pich,yaw);
+    printf("roll = %f pich = %f yaw = %f\n",roll,pitch,yaw);
     //時間変化の計算
     t_s = pose.header.stamp.sec - t_s_1;
     t_n = pose.header.stamp.nsec - t_n_1;
