@@ -8,7 +8,7 @@
 #include <geometry_msgs/PoseStamped.h>
 #include<cmath>
 #include "master/deg.h"
-#include <tf/transform_listener.h>
+#include <tf/transform_broadcaster.h>
 
 //#define x_d 0.40  //目標位置
 //#define K_p 0.1  //目標ゲイン
@@ -62,7 +62,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     int t_s = 0;  // 秒の変化
     int t_n = 0;  //　ナノ秒の変化
 
-    GetRPY(pose.pose.pose.orientation,roll,pitch,yaw);
+    GetRPY(pose.pose.orientation,roll,pitch,yaw);
     //時間変化の計算
     t_s = pose.header.stamp.sec - t_s_1;
     t_n = pose.header.stamp.nsec - t_n_1;
