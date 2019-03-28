@@ -59,7 +59,7 @@ void chatterCallback(const geometry_msgs::PoseStamped pose )
     double a_s = 0.0; //加速度
     double v = 0.0;
     double w = 0.0;
-    double v_s;
+    double v_s=0.0;
     int t_s = 0;  // 秒の変化
     int t_n = 0;  //　ナノ秒の変化
 
