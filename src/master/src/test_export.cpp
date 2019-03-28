@@ -40,11 +40,11 @@ int t_n_1 = 0; // 前回のナノ秒
 int t_s_1 = 0; // 前回の秒
 
 //座標変換の関数
- void GetRPY(const geometry_msgs::Quaternion &q,double &roll,double &pitch,double &yaw){
- 　//bulletのクオータニオンに変換
- 　btQuaternion btq(q.x,q.y,q.z,q.w);
- 　tf::Matrix3x3(btq).getRPY(roll, pitch, yaw);
- }
+void GetRPY(const geometry_msgs::Quaternion &q,double &roll,double &pitch,double &yaw){
+//bulletのクオータニオンに変換
+   btQuaternion btq(q.x,q.y,q.z,q.w);
+   tf::Matrix3x3(btq).getRPY(roll, pitch, yaw);
+}
 
 // Subscribeする対象のトピックが更新されたら呼び出されるコールバック関数
 // 引数にはトピックにPublishされるメッセージの型と同じ型を定義する
