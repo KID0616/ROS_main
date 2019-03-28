@@ -213,7 +213,7 @@ int main(int argc, char **argv)
   twist.angular.y = 0.0;
   twist.angular.z = 0.0;  //回転に寄与するのはこの部分だけ
 
-  msg.deg = 0;
+  msg.deg = 90;
 
   //ここからSubscriberの定義
   
