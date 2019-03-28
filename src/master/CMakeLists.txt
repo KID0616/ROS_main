@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
   message_generation
+  tf
 )
 
 
@@ -198,6 +199,6 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 add_executable(test_export src/test_export.cpp)
-target_link_libraries(test_export ${catkin_LIBRARIES} tf/transform_broadcaster.h)
+target_link_libraries(test_export ${catkin_LIBRARIES})
 add_executable(servo_test src/servo_test.cpp)
 target_link_libraries(servo_test ${catkin_LIBRARIES} pigpiod_if2)
