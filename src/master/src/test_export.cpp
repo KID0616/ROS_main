@@ -8,6 +8,7 @@
 #include <geometry_msgs/PoseStamped.h>
 #include<cmath>
 #include "master/deg.h"
+#include <tf/transform_listener.h>
 
 //#define x_d 0.40  //目標位置
 //#define K_p 0.1  //目標ゲイン
@@ -39,8 +40,7 @@ int t_n_1 = 0; // 前回のナノ秒
 int t_s_1 = 0; // 前回の秒
 
 //座標変換の関数
- void GetRPY(const geometry_msgs::Quaternion &q,
- 　double &roll,double &pitch,double &yaw){
+ void GetRPY(const geometry_msgs::Quaternion &q,double &roll,double &pitch,double &yaw){
  　//bulletのクオータニオンに変換
  　btQuaternion btq(q.x,q.y,q.z,q.w);
  　tf::Matrix3x3(btq).getRPY(roll, pitch, yaw);
